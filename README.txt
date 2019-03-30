@@ -541,3 +541,10 @@ Then reload sshd:
 
 
 90- Create local setting file on remote server because settings.py has all the settings and secret keys and database which also available in github which we dont want it to be exposed. For that we ll craete special settings file on the remote server which will add code at the end of settings.py which will hide all the things in the development
+
+
+- Put the following code to the end of settings.py of btre folder:
+try:
+    from .local_settings import *
+except ImportError:
+    pass
