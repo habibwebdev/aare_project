@@ -5,7 +5,50 @@
 ======  python manage.py startapp accounts ====== Run the create the app named accounts
 ======  python manage.py makemigrations contacts ====== Run the create the migrations for contacts app model
 ======  python manage.py migrate ====== Run to create the table into the database
+======  ls  ====== list of directories
+======  ls -a ====== list of directories including all the hidden files
+======  ./.ssh ====== Go to .ssh folder at the home directory
+======  ssh-keygen ~/.ssh/id_rsa_do  ====== Generates the SSH Keys
+OR
+======  ssh-keygen ~/.ssh/id_rsa_do  ====== Generates the SSH Keys
+OR
+======  ssh-keygen ./.ssh/id_rsa_do  ====== Generates the SSH Keys
+OR
+======  ssh-keygen  ====== Generates the SSH Keys
+======  cat ./.ssh/id_rsa_do.pub  ====== Prints SSH Keys
+======  - eval `ssh-agent -s`   ====== creates ssh agent
+======  - ssh-add ./.ssh/id_rsa_do  ====== add ssh custom file name
+======  - ssh root@68.183.86.161  ====== Allows to login to D.O Droplet
+======  - ssh djangoadmin@142.93.222.246  ====== Allows to login to D.O Droplet
+======  adduser djangoadmin  ====== Adds another user to server apart from root
+======  ctrl+L  ====== clears the unix command line
+====== usermod -aG sudo djangoadmin  ====== Gives previliges to user we created above
+======  cd /home/djangoadmin  ====== Go to djangoadmin user
+======  mv autherized_keys authorized_keys  ====== Changes the folder name(autherized_keys is the old name and authorized_keys is the new name)
 
+======  exit  ====== logs out the user
+======  ssh djangoadmin@142.93.222.246  ======  Login as djangoadmin
+======  sudo apt update  ====== Update the packages
+======  sudo apt upgrade  ====== Upgrade the packages
+======  sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl  ====== Install python3 postgres & NGINX
+======  sudo -u postgres psql  ====== Going inside postgres
+======  CREATE DATABASE aare_prod;  ====== create database
+======  CREATE USER dbadmin WITH PASSWORD 'abc123!';  ====== create user with password
+======  ALTER ROLE dbadmin SET client_encoding TO 'utf8';  ====== Set default encoding
+======  ALTER ROLE dbadmin SET default_transaction_isolation TO 'read committed';  ====== Set default transaction
+======  ALTER ROLE dbadmin SET timezone TO 'UTC';  ====== Set default timezone
+======  GRANT ALL PRIVILEGES ON DATABASE aare_prod TO dbadmin;  ====== Gives User access to database
+======  \q  ====== Get out of postgres
+======  sudo apt install python3-venv  ====== Installs the virtual environment
+======  mkdir pyapps  ====== create directory for all python app in the home folder of remote server
+======  cd pyapps  ====== go to pyapps
+======  python3 -m venv ./venv  ====== create virtual environment
+======  source venv/bin/activate  ====== activate virtual environment
+======  pip freeze > requirements.txt  ====== Get all the dependencies into text file
+======  ls   ====== show all the files
+======  cat requirements.txt   ====== show inside the file
+======  git add .   ====== push it ti git repo
+======  git add .   ====== show inside the file
 
 **********************************************************************
 
@@ -318,3 +361,160 @@ EMAIL_USE_TLS = True
 - git init (initialize the git)
 - git add . (adds everthing to staging area)
 - git commit -m 'Initial Commit' (commit with comment)
+- git remote add origin https://github.com/habibwebdev/aare_project.git (push to remote repo)
+- git push -u origin master (push to master branch)
+
+74- link below is deployment guide
+
+- https://gist.github.com/bradtraversy/cfa565b879ff1458dba08f423cb01d71
+
+75- link to digital ocean from brad travesy
+
+- https://www.digitalocean.com/?refcode=5424d440c63a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste
+
+76- signup and then click green button right top in the navbar and create a droplet then choose
+
+- 18.04 * 64 under Ubuntu
+
+then select price plan for 5$ / month
+then create SSH keys after and under the price plan section for security
+
+77- open git bash at the project then run the virtual environment then cd to home directory which in my case is my DeLL PC and then run following command to list the directories
+
+- ls
+
+to view list of directories with all the hidden files run the following command
+
+- ls -a
+ this show all the hidden files including .ssh folder as well
+
+ then
+
+- ls ./.ssh
+
+The followoing commadn wil create ssh key file in custom file name inside .ssh folder _do means digital ocean
+
+- ssh-keygen ~/.ssh/id_rsa_do
+- ssh-keygen ./.ssh/id_rsa_do
+
+or
+
+ssh-keygen
+
+then add C:/Users/DeLL/.ssh/id_rsa_do
+
+78- Then run the following command to get the key and paste it in the digital ocean where it says new SSH key then paste it inisde a modal window and green check mark will appear if its correct and name it DeLL because i am on Dell pc name
+
+- cat ./.ssh/id_rsa_do.pub(prints the ssh key)
+
+79- choose the hostname after ssh keys
+
+- ubuntu1
+ and press create
+
+80- Then click droplet in the left sidebar and then click Graphs. There you will find ipv4 whioch is the ip address for the server copy that and paste it like follows:
+
+if you have ssh in default file means id_rsa run the following command
+
+- ssh root@68.183.86.161(login)
+
+If you have changed the ssh file name like id_rsa_do then run the following command
+
+- eval `ssh-agent -s`
+- ssh-add ./.ssh/id_rsa_do
+- ssh root@68.183.86.161(login)
+
+then message will apear that identity added to certain folder means as above.
+
+81- Create the new user for security because we dont want to use the root user for that do the followings:
+
+- adduser djangoadmin (run in terminal, adding new user)
+
+ password: cakes
+ confirmpassword: cakes
+
+- usermod -aG sudo djangoadmin (gives previliges to user we created above)
+
+- cd /home/djangoadmin (Go to djangoadmin user folder)
+
+And create folder .ssh as below:
+- mkdir .ssh
+Then go to .ssh folder by:
+- cd .ssh
+create autherize.keys file inisde .ssh of djangoadmin(nano is command line text editor)
+- nano autherized_keys
+ Open new terminal then cd then
+ - cat ./.ssh/id_rsa_do.pub (gives the public ssh key)
+ Copy the key and paste it in nano command line text editor in the previous terminal then
+ - ctrl+x
+ - y
+ - enter
+
+ You will be back to on the server
+
+ check the autherized_key folder by :
+ - cat autherized_keys
+
+- exit (logout the user)
+
+ And login as djangoadmin by:
+ - ssh djangoadmin@142.93.222.246
+
+82- Now disable the root to login
+
+- sudo nano /etc/ssh/sshd_config
+
+will ask for password which is when you created djangoadmin enter that and you will be taken to nano screen find followings and set to no
+
+- PermitRootLogin no
+- PasswordAuthentication no
+
+Then run the following commands
+- ctrl+x
+- y
+- enter
+
+Then reload sshd:
+- sudo systemctl reload sshd
+
+83- Add the firewall
+
+- sudo ufw app list
+- sudo ufw allow OpenSSH (allows open ssh)
+- sudo ufw enable (enables the firewall and enter y when it asks for permission)
+- sudo ufw status (checks status for firewall)
+
+84- Update & Upgrade the packages on server:
+
+- sudo apt update
+- sudo apt upgrade
+
+85- Install python3, postgres and NGINX on server
+
+- sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+
+86- Setup the database by going into postgres
+
+- sudo -u postgres psql
+
+87- After entering the postgres create database, create user with passowrd, set the default encoding, set default transaction_isolation and set degault timezone and then grant the access to user for database and then get out of postgres:
+
+- CREATE DATABASE aare_prod;
+- CREATE USER dbadmin WITH PASSWORD 'abc123!';
+- ALTER ROLE dbadmin SET client_encoding TO 'utf8';
+- ALTER ROLE dbadmin SET default_transaction_isolation TO 'read committed';
+- ALTER ROLE dbadmin SET timezone TO 'UTC';
+- GRANT ALL PRIVILEGES ON DATABASE aare_prod TO dbadmin;
+- \q
+
+88- Now Install the virtual environment, then make pyapps directory in the home and go to pyapps directory and create virtual environment and then activate it :
+
+- sudo apt install python3-venv
+- mkdir pyapps
+- cd pyapps
+- python3 -m venv ./venv
+- ls
+- ls venv
+- source venv/bin/activate
+
+89- Now clone our git repo which has our application and for that we need the dependencies. Go to local project and in virtual environment
