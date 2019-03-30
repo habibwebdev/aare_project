@@ -536,7 +536,7 @@ Then reload sshd:
 - ls (remote)
 - ls aare_project (remote)
 - cd aare_project (remote)
-- pip install -r requiremts.txt (remote)
+- pip install -r requirements.txt (remote)
 - pip freeze (remote)
 
 
@@ -548,3 +548,35 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+ Create file local_settings.py only on local production remote server (Not Locally):
+ - sudo nano local_settings.py
+
+ sec_key = '_g062ysd&2+a5p-!m8874cm9845mcmhvbgrozrmx(k#xad*skno3!)'
+
+ code of local_settings.py
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '_g062ysd&2+a5p-!m8874cm9845mcmhvbgrozrmx(k#xad*skno3!)'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['142.93.222.246']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'aare_prod',
+        'USER': 'dbadmin',
+        'PASSWORD': 'abc123!',
+        'HOST': 'localhost'
+    }
+}
+
+# Email Config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'abbasali211@gmail.com'
+EMAIL_HOST_PASSWORD = 'bu115eye4eva'
+EMAIL_USE_TLS = True
