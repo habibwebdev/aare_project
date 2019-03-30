@@ -47,8 +47,14 @@ OR
 ======  pip freeze > requirements.txt  ====== Get all the dependencies into text file
 ======  ls   ====== show all the files
 ======  cat requirements.txt   ====== show inside the file
-======  git add .   ====== push it ti git repo
-======  git add .   ====== show inside the file
+======  git add .  ====== add the file to git
+======  git commit -m 'Added requirements file'   ====== commit with comment
+======  git push  ====== push it to git repo
+======  git clone https://github.com/habibwebdev/aare_project.git  ====== clone the repo to remote server
+======  pip freeze  ====== show all the dependencies
+======  cd aare_project  ====== show all the dependencies
+======  pip install -r requirements.txt  ====== download all the dependencies from requirements.txt
+======  pip freeze  ====== show all the dependencies
 
 **********************************************************************
 
@@ -517,4 +523,21 @@ Then reload sshd:
 - ls venv
 - source venv/bin/activate
 
-89- Now clone our git repo which has our application and for that we need the dependencies. Go to local project and in virtual environment
+89- Now clone our git repo which has our application and for that first we need the dependencies. Go to local project and in virtual environment amd check the dependencies by pip freeze and then create requirements.txt file and edit it then add it, commit it and push it to git repo then clone it into remote server in terminal ls aare_project, cd aare-project and install dependencies from requirements.tx file and check the installed dependencies by pip freeze into remote server:
+
+- pip freeze (locally)
+- pip freeze > requirements.txt (locally)
+- ls (locally)
+- cat requirements.txt (locally)
+- git add . (locally)
+- git commit -m 'Added requirements file' (locally)
+- git push (locally)
+-  git clone https://github.com/habibwebdev/aare_project.git (remote)
+- ls (remote)
+- ls aare_project (remote)
+- cd aare_project (remote)
+- pip install -r requiremts.txt (remote)
+- pip freeze (remote)
+
+
+90- Create local setting file on remote server because settings.py has all the settings and secret keys and database which also available in github which we dont want it to be exposed. For that we ll craete special settings file on the remote server which will add code at the end of settings.py which will hide all the things in the development
