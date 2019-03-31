@@ -19,7 +19,6 @@ OR
 ======  - eval `ssh-agent -s`   ====== creates ssh agent
 ======  - ssh-add ./.ssh/id_rsa_do  ====== add ssh custom file name
 ======  - ssh root@68.183.86.161  ====== Allows to login to D.O Droplet
-======  - ssh djangoadmin@142.93.222.246  ====== Allows to login to D.O Droplet
 ======  adduser djangoadmin  ====== Adds another user to server apart from root
 ======  ctrl+L  ====== clears the unix command line
 ====== usermod -aG sudo djangoadmin  ====== Gives previliges to user we created above
@@ -27,7 +26,6 @@ OR
 ======  mv autherized_keys authorized_keys  ====== Changes the folder name(autherized_keys is the old name and authorized_keys is the new name)
 
 ======  exit  ====== logs out the user
-======  ssh djangoadmin@142.93.222.246  ======  Login as djangoadmin
 ======  sudo apt update  ====== Update the packages
 ======  sudo apt upgrade  ====== Upgrade the packages
 ======  sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl  ====== Install python3 postgres & NGINX
